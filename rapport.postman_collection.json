@@ -1,0 +1,176 @@
+{
+  "info": {
+    "_postman_id": "a6024c6f-8ce9-42dc-a853-a7b6a0dcdb90",
+    "name": "rapport",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58117863",
+    "_collection_link": "https://go.postman.co/collection/58117863-a6024c6f-8ce9-42dc-a853-a7b6a0dcdb90?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Post",
+      "item": [
+        {
+          "name": "CreateClient",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test.skip(\"Le code retour est 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test.skip(\"Le client possède un ID\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response).to.have.property(\"id\");\r\n});\r\n\r\npm.test(\"Le lastname est correct\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.lastname).to.eql(\"Dupont\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"lastname\": \"Dupont\",\r\n  \"firstname\": \"Jean\",\r\n  \"address\": {\r\n    \"numStreet\": 10,\r\n    \"streetName\": \"Rue de Paris\",\r\n    \"postalCode\": \"75001\",\r\n    \"city\": \"Paris\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://695bcf701d8041d5eeb88ad5.mockapi.io/testapi/api/v1/users",
+              "protocol": "https",
+              "host": [
+                "695bcf701d8041d5eeb88ad5",
+                "mockapi",
+                "io"
+              ],
+              "path": [
+                "testapi",
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateClient2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Le code retour est 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Le client possède un ID\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response).to.have.property(\"id\");\r\n});\r\n\r\npm.test(\"Le firstname est correct\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.firstname).to.eql(\"Sophie\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"lastname\": \"Martin\",\r\n  \"firstname\": \"Sophie\",\r\n  \"address\": {\r\n    \"numStreet\": 25,\r\n    \"streetName\": \"Rue Victor Hugo\",\r\n    \"postalCode\": \"69001\",\r\n    \"city\": \"Lyon\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://695bcf701d8041d5eeb88ad5.mockapi.io/testapi/api/v1/users",
+              "protocol": "https",
+              "host": [
+                "695bcf701d8041d5eeb88ad5",
+                "mockapi",
+                "io"
+              ],
+              "path": [
+                "testapi",
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Get",
+      "item": [
+        {
+          "name": "GetAllClients",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test.skip(\"Le code retour est 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"La réponse est un tableau\", function () {\r\n    pm.expect(pm.response.json()).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Le temps de réponse est inférieur à 2000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://695bcf701d8041d5eeb88ad5.mockapi.io/testapi/api/v1/users",
+              "protocol": "https",
+              "host": [
+                "695bcf701d8041d5eeb88ad5",
+                "mockapi",
+                "io"
+              ],
+              "path": [
+                "testapi",
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetClientById",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Le code retour est 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"La réponse contient un ID\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response).to.have.property(\"id\");\r\n});\r\n\r\npm.test(\"Le temps de réponse est inférieur à 2000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://695bcf701d8041d5eeb88ad5.mockapi.io/testapi/api/v1/users/1",
+              "protocol": "https",
+              "host": [
+                "695bcf701d8041d5eeb88ad5",
+                "mockapi",
+                "io"
+              ],
+              "path": [
+                "testapi",
+                "api",
+                "v1",
+                "users",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
