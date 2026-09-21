@@ -31,3 +31,10 @@ jobs:
           newman run rapport.postman_collection.json \
             -r cli,htmlextra \
             --reporter-htmlextra-export newman/rapport.html
+
+      - name: Publier le rapport Newman
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-newman
+          path: newman/rapport.html
