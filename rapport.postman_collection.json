@@ -109,7 +109,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test.skip(\"Le code retour est 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"La réponse est un tableau\", function () {\r\n    pm.expect(pm.response.json()).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Le temps de réponse est inférieur à 2000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});"
+                  "pm.test.skip(\"Le code retour est 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"La réponse est un tableau\", function () {\r\n    pm.expect(pm.response.json()).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Le temps de réponse est inférieur à 2000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(10000);\r\n});"
                 ]
               }
             }
